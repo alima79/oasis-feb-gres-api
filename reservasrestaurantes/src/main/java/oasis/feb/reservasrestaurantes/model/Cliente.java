@@ -21,7 +21,7 @@ public class Cliente {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotEmpty(message = "O Atributo NOME não pode ser Vazio!")
+	@NotEmpty(message = "O Atributo NOME está Vazio!")
 	@Size(min=2, 
 	  max=64,
 	  message = "O Numero de caracteres do atributo 'NOME' tem de estar entre 2 and 64!")
