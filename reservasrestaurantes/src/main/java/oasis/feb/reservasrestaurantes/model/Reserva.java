@@ -1,5 +1,6 @@
 package oasis.feb.reservasrestaurantes.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class Reserva {
 	private Integer numeroCrianca;
 	
 	@Column(name="data_reserva", nullable=false, updatable=true, unique=false)
-	private LocalDateTime dataReserva;
+	private LocalDate dataReserva;
 	
 	@NotEmpty(message = "O Atributo OBSERVAÇÕES não pode ser Vazio!")
 	@Size(min=2, 
@@ -102,7 +103,7 @@ public class Reserva {
 	
 	public Reserva(Integer numeroAdulto, 
 				   Integer numeroCrianca, 
-				   LocalDateTime dataReserva,
+				   LocalDate dataReserva,
 				   String observacoes, 
 				   String comentarios, 
 				   Boolean ativo,
@@ -121,7 +122,7 @@ public class Reserva {
 	public Reserva(Long id, 
 				   Integer numeroAdulto, 
 				   Integer numeroCrianca,
-				   LocalDateTime dataReserva, 
+				   LocalDate dataReserva, 
 				   String observacoes, 
 				   String comentarios,
 				   Boolean ativo,
@@ -162,11 +163,11 @@ public class Reserva {
 		this.numeroCrianca = numeroCrianca;
 	}
 
-	public LocalDateTime getDataReserva() {
+	public LocalDate getDataReserva() {
 		return this.dataReserva;
 	}
 
-	public void setDataReserva(LocalDateTime dataReserva) {
+	public void setDataReserva(LocalDate dataReserva) {
 		this.dataReserva = dataReserva;
 	}
 

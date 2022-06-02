@@ -1,5 +1,6 @@
 package oasis.feb.reservasrestaurantes.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class RestauranteSeating {
 	private Long id;
 	
 	@Column(name="data", nullable=false, unique=false, updatable=true)
-	private LocalDateTime data;
+	private LocalDate data;
 	
 	@Column(name="lotacao", nullable=false, unique=false, updatable=true)
 	private Integer lotacao;
@@ -54,7 +55,7 @@ public class RestauranteSeating {
 	public RestauranteSeating() {}
 	
 	public RestauranteSeating(Long id, 
-							  LocalDateTime data, 
+							  LocalDate data, 
 							  Integer lotacao,
 							  Boolean ativo,
 							  LocalDateTime dataCriacao,
@@ -68,7 +69,7 @@ public class RestauranteSeating {
 	}	
 
 
-	public RestauranteSeating(LocalDateTime data, 
+	public RestauranteSeating(LocalDate data, 
 							  Integer lotacao, 
 							  Boolean ativo,
 							  LocalDateTime dataCriacao,
@@ -88,11 +89,11 @@ public class RestauranteSeating {
 		this.id = id;
 	}
 
-	public LocalDateTime getData() {
+	public LocalDate getData() {
 		return this.data;
 	}
 
-	public void setData(LocalDateTime data) {
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
 
