@@ -21,7 +21,7 @@ public class GlobalExceptionHandler{
 	public ResponseEntity<?> handleConstraintViolationException(ConstraintViolationException exception,
 																WebRequest request){
 		ExceptionMessage exceptionMessage = new ExceptionMessage(new Date(), 
-																 "Erro no pedido! Por favor verifique o seu pedido e volta a tentar.",
+																 "Erro no seu pedido! Por Favor, verifique o seu pedido e volta a tentar!",
 																 request.getDescription(false));
 		return new ResponseEntity(exceptionMessage, HttpStatus.BAD_REQUEST);		
 	}

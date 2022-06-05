@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -23,9 +25,13 @@ public class RestauranteSeating {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name="data", nullable=false, unique=false, updatable=true)
+	@FutureOrPresent(message="A Data de Reserva tem de ser uma Data Presente ou Futuro!!") 
+	@NotNull(message="A Data de Reserva nao pode ser Null")
+	@Column(name="data", nullable=false, unique=false, updatable=true, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private LocalDate data;
 	
+	@Min(1)
+	@Max(100)
 	@Column(name="lotacao", nullable=false, unique=false, updatable=true)
 	private Integer lotacao;
 	

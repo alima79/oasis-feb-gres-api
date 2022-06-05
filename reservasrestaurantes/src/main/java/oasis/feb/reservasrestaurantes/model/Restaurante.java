@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -28,7 +30,8 @@ public class Restaurante {
 	  message = "O Numero de caracteres do atributo 'NOME' tem de estar entre 2 and 64!")
 	@Column(name="nome", length=64, nullable = false, unique=true, updatable=true)
 	private String nome;
-	
+	@Min(1)
+	@Max(100)
 	@Column(name="lotacao_maxima", nullable = false, unique=false, updatable=true)
 	private Integer lotacaoMaxima;
 	

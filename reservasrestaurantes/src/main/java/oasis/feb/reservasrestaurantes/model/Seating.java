@@ -19,12 +19,15 @@ public class Seating {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotNull(message="O Atributo Hora de Inicio nao pode ser Null!!!")
 	@Column(name="hora_inicio", nullable = false, unique=false, updatable=true)
 	private LocalTime horaInicio;
 	
+	@NotNull(message="O Atributo Hora de Fim nao pode ser Null!!!")
 	@Column(name="hora_fim", nullable = false, unique=false, updatable=true)
 	private LocalTime horaFim;
 	
+	@NotNull(message="O Atributo COMPLETO não pode ser NULL!!!")
 	@Column(name="completo", nullable = false, unique=false, updatable=true, columnDefinition="boolean default false")
 	private Boolean completo;
 	

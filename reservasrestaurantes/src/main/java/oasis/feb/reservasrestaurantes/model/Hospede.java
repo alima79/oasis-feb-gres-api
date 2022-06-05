@@ -15,6 +15,9 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
+import oasis.feb.reservasrestaurantes.validator.NumeroCrianca;
+import oasis.feb.reservasrestaurantes.validator.NumeroQuarto;
+
 @Entity
 public class Hospede {
 	
@@ -22,9 +25,10 @@ public class Hospede {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Positive(message="Numero de Quarto Invalido: Tem de ser um Numero Positivo")
-	@Min(2)
-	@Max(10)
+	//@Positive(message="Numero de Quarto Invalido: Tem de ser um Numero Positivo")
+	//@Min(2)
+	//@Max(10)
+	@NumeroQuarto
 	@Column(name= "numero_quarto", nullable=false, unique=false, updatable=true)
 	private Integer numeroQuarto;
 	
