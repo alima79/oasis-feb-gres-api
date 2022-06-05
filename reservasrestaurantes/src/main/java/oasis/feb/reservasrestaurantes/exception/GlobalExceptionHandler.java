@@ -41,7 +41,7 @@ public class GlobalExceptionHandler{
 		ExceptionMessage exceptionMessage = new ExceptionMessage(new Date(), 
 																 "Violacao de Integridade da Base de Dados! Reve o seu Pedido! ",
 																 request.getDescription(false));
-		return new ResponseEntity(exceptionMessage, HttpStatus.NOT_FOUND);		
+		return new ResponseEntity(exceptionMessage, HttpStatus.BAD_REQUEST);		
 	}
 	
 	
