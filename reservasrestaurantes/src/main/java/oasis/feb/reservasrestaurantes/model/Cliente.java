@@ -11,7 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -55,14 +57,19 @@ public class Cliente {
 	private String tipo;
 	
 	
+	@NotNull(message="O Atributo ATIVO não pode ser NULL!!!")
 	@Column(name="ativo", nullable=false, unique= false, updatable= true, columnDefinition="boolean default false")
 	private Boolean ativo;
 	
-	@Column(name="create_time", nullable=false, updatable=false, unique=false)
+	@FutureOrPresent(message="A Data de Criacão tem de ser uma Data Presente ou Futuro!!") 
+	@NotNull(message="A Data de Criacao nao pode ser Null")
+	@Column(name="create_time", nullable=false, updatable=false, unique=false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private LocalDateTime dataCriacao;
 	
-	@Column(name="last_update", nullable=false, updatable=true, unique=false)
-	private LocalDateTime dataUltimaActualizacao;
+	@FutureOrPresent(message="A Data de Actualizacao tem de ser uma Data Presente ou Futuro!!") 
+	@NotNull(message="A Data de Actualizacao nao pode ser Null")
+	@Column(name="last_update", nullable=false, updatable=true, unique=false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	private LocalDateTime dataUltimaActualizacao;	
 
 	
 	/* Entidades dos Relacionamentos*/

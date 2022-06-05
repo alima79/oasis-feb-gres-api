@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class RestauranteSeating {
@@ -27,14 +29,19 @@ public class RestauranteSeating {
 	@Column(name="lotacao", nullable=false, unique=false, updatable=true)
 	private Integer lotacao;
 	
+	@NotNull(message="O Atributo ATIVO não pode ser NULL!!!")
 	@Column(name="ativo", nullable=false, unique= false, updatable= true, columnDefinition="boolean default false")
 	private Boolean ativo;
 	
-	@Column(name="create_time", nullable=false, updatable=false, unique=false)
+	@FutureOrPresent(message="A Data de Criacão tem de ser uma Data Presente ou Futuro!!") 
+	@NotNull(message="A Data de Criacao nao pode ser Null")
+	@Column(name="create_time", nullable=false, updatable=false, unique=false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private LocalDateTime dataCriacao;
 	
-	@Column(name="last_update", nullable=false, updatable=true, unique=false)
-	private LocalDateTime dataUltimaActualizacao;
+	@FutureOrPresent(message="A Data de Actualizacao tem de ser uma Data Presente ou Futuro!!") 
+	@NotNull(message="A Data de Actualizacao nao pode ser Null")
+	@Column(name="last_update", nullable=false, updatable=true, unique=false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	private LocalDateTime dataUltimaActualizacao;	
 	
 	/* Entidades dos Relacionamentos*/
 	@ManyToOne(cascade = CascadeType.ALL)

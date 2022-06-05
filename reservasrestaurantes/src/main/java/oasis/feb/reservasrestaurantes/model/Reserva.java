@@ -15,9 +15,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
@@ -62,14 +64,19 @@ public class Reserva {
 	private String comentarios;
 	
 	
-	@Column(nullable=false,columnDefinition = "boolean default false")
+	@NotNull(message="O Atributo ATIVO não pode ser NULL!!!")
+	@Column(name="ativo", nullable=false, unique= false, updatable= true, columnDefinition="boolean default false")
 	private Boolean ativo;
 	
-	@Column(name="creation_time", nullable=false, updatable=false)
+	@FutureOrPresent(message="A Data de Criacão tem de ser uma Data Presente ou Futuro!!") 
+	@NotNull(message="A Data de Criacao nao pode ser Null")
+	@Column(name="create_time", nullable=false, updatable=false, unique=false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private LocalDateTime dataCriacao;
 	
-	@Column(name="last_update", nullable=false)
-	private LocalDateTime dataUltimaActualizacao;
+	@FutureOrPresent(message="A Data de Actualizacao tem de ser uma Data Presente ou Futuro!!") 
+	@NotNull(message="A Data de Actualizacao nao pode ser Null")
+	@Column(name="last_update", nullable=false, updatable=true, unique=false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	private LocalDateTime dataUltimaActualizacao;	
 	
 	
 	/* Entidades dos Relacionamentos*/
