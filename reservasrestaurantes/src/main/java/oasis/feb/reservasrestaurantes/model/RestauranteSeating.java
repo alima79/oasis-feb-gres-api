@@ -27,7 +27,7 @@ public class RestauranteSeating {
 	
 	@FutureOrPresent(message="A Data de Reserva tem de ser uma Data Presente ou Futuro!!") 
 	@NotNull(message="A Data de Reserva nao pode ser Null")
-	@Column(name="data", nullable=false, unique=false, updatable=true, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	@Column(name="data", nullable=false, unique=false, updatable=true)
 	private LocalDate data;
 	
 	@Min(1)
