@@ -7,12 +7,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import oasis.feb.reservasrestaurantes.model.Reserva;
 import oasis.feb.reservasrestaurantes.model.RestauranteSeating;
 
+@CrossOrigin("http://localhost:4200")
 public interface ReservaRepository extends JpaRepository<Reserva, Long>{
 
+	Page<Reserva> findAll(Pageable pageable);
+	
 	Page<Reserva> findById(Long id, Pageable pageable);
 	
 	
