@@ -7,10 +7,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import oasis.feb.reservasrestaurantes.model.Cliente;
 import oasis.feb.reservasrestaurantes.model.Estado;
 
+@CrossOrigin("http://localhost:4200")
 @RepositoryRestResource(collectionResourceRel = "estados", path = "estados")
 public interface EstadoRepository extends JpaRepository<Estado, Long>{
 

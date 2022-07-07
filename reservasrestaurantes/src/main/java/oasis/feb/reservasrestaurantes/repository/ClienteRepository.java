@@ -8,11 +8,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import oasis.feb.reservasrestaurantes.model.Cliente;
 
-
+@CrossOrigin("http://localhost:4200")
 @RepositoryRestResource(collectionResourceRel = "clientes", path = "clientes")
 public interface ClienteRepository extends JpaRepository<Cliente, Long>{
 
